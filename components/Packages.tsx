@@ -149,7 +149,7 @@ const Packages: React.FC = () => {
 
               {/* Icon Image */}
               <img
-                src={`/SALT/${iconImages[idx]}`}
+                src={`/${iconImages[idx]}`}
                 alt={`${item.title} Icon`}
                 className="w-24 h-24 md:w-32 md:h-32 object-contain mb-8 transition-all duration-500 group-hover:scale-110 relative z-10"
               />

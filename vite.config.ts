@@ -4,13 +4,10 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/SALT/',
+  base: './',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: false,
-  },
-  define: {
-    'process.env.API_KEY': JSON.stringify(process.env.API_KEY || '')
   }
 });
