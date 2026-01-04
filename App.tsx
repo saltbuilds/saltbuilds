@@ -3,7 +3,6 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Packages from './components/Packages';
 import Portfolio from './components/Portfolio';
-import InstagramFeed from './components/InstagramFeed';
 import Footer from './components/Footer';
 
 const App: React.FC = () => {
@@ -49,9 +48,6 @@ const App: React.FC = () => {
         </section>
         <section id="portfolio">
           <Portfolio />
-        </section>
-        <section id="instagram">
-          <InstagramFeed />
         </section>
       </main>
       <Footer />
