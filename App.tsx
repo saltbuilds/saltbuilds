@@ -6,7 +6,6 @@ import Portfolio from './components/Portfolio';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import WebVitals from './components/WebVitals';
-import SaltParticles from './components/SaltParticles';
 
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -23,9 +22,6 @@ const App: React.FC = () => {
     <div className="min-h-screen flex flex-col relative overflow-hidden" style={{ backgroundColor: '#F0F9FB' }}>
       {/* Web Vitals Monitoring */}
       <WebVitals />
-
-      {/* Salt Particle Animations */}
-      <SaltParticles />
 
       {/* Royal Background System */}
       <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
