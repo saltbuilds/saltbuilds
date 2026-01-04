@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Packages from './components/Packages';
 import Portfolio from './components/Portfolio';
+import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import WebVitals from './components/WebVitals';
 import SaltParticles from './components/SaltParticles';
@@ -56,6 +57,9 @@ const App: React.FC = () => {
         </section>
         <section id="portfolio">
           <Portfolio />
+        </section>
+        <section id="faq">
+          <FAQ />
         </section>
       </main>
       <Footer />
