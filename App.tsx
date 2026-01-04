@@ -4,6 +4,8 @@ import Hero from './components/Hero';
 import Packages from './components/Packages';
 import Portfolio from './components/Portfolio';
 import Footer from './components/Footer';
+import WebVitals from './components/WebVitals';
+import SaltParticles from './components/SaltParticles';
 
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -18,6 +20,12 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden" style={{ backgroundColor: '#F0F9FB' }}>
+      {/* Web Vitals Monitoring */}
+      <WebVitals />
+
+      {/* Salt Particle Animations */}
+      <SaltParticles />
+
       {/* Royal Background System */}
       <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
         {/* Base Gradient */}

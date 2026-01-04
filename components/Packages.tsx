@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { COLORS } from '../constants';
 import SaltCharacter from './SaltCharacter';
+import LazyImage from './LazyImage';
 
 interface OfferItem {
   title: string;
@@ -12,74 +13,74 @@ interface OfferItem {
 
 const offers: OfferItem[] = [
   {
-    title: "Fully Custom Coded.",
-    description: "No Templates, No Builders",
+    title: "Pure Custom",
+    description: "Code",
     icon: "💻",
     color: "#E2E8F0"
   },
   {
-    title: "Unique Premium Responsive",
-    description: "Designs",
+    title: "Crystal Clear",
+    description: "Responsive",
     icon: "🎨",
     color: "#F1F5F9"
   },
   {
-    title: "100% Mobile",
-    description: "Responsive",
+    title: "Seamless Every",
+    description: "Surface",
     icon: "📱",
     color: "#E0F2FE"
   },
   {
-    title: "Result-Focused",
+    title: "Flavor-Packed",
     description: "Content",
     icon: "📝",
     color: "#DBEAFE"
   },
   {
-    title: "Tailored to Your",
-    description: "Business",
+    title: "Preserved For Your",
+    description: "Brand",
     icon: "👔",
     color: "#F8FAFC"
   },
   {
-    title: "Lead-Driven",
-    description: "Web Strategy",
+    title: "Magnetic Lead",
+    description: "Strategy",
     icon: "📊",
     color: "#F1F5F9"
   },
   {
-    title: "Search Engine",
-    description: "Optimization",
+    title: "Salt-First Search",
+    description: "Boost",
     icon: "🔍",
     color: "#E2E8F0"
   },
   {
-    title: "Rapid Action",
-    description: "& Prompt Response",
+    title: "Instant Flavor",
+    description: "Response",
     icon: "⚡",
     color: "#FFF7ED"
   },
   {
-    title: "Expertise in Every",
-    description: "Industry",
+    title: "Seasoned Industry",
+    description: "Mastery",
     icon: "🏗️",
     color: "#F8FAFC"
   },
   {
-    title: "Reporting, Insights",
-    description: "& Analysis",
+    title: "Pure Insights",
+    description: "Distilled",
     icon: "📈",
     color: "#F1F5F9"
   },
   {
-    title: "Cloud Hosting",
-    description: "Solutions",
+    title: "Cloud-Pure",
+    description: "Hosting",
     icon: "☁️",
     color: "#EFF6FF"
   },
   {
-    title: "Support, Monitoring",
-    description: "& Maintenance",
+    title: "Ever-Preserved",
+    description: "Care",
     icon: "🛠️",
     color: "#F1F5F9"
   }
@@ -148,11 +149,12 @@ const Packages: React.FC = () => {
 
 
               {/* Icon Image */}
-              <img
+              <LazyImage
                 src={`/${iconImages[idx]}`}
                 alt={`${item.title} Icon`}
-                className="w-24 h-24 md:w-32 md:h-32 object-contain mb-8 transition-all duration-500 group-hover:scale-110 relative z-10"
+                className="w-32 h-32 md:w-40 md:h-40 object-contain mb-8 transition-all duration-500 group-hover:scale-110 relative z-10"
               />
+
 
               {/* Text */}
               <div className="space-y-1 relative z-10">
