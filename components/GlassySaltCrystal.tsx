@@ -18,11 +18,11 @@ function MainCrystal({ mousePosition, scrollProgress }: CrystalProps) {
     useFrame(() => {
         if (!meshRef.current) return;
 
-        const targetRotationY = mousePosition.x * 0.4;
-        const targetRotationX = mousePosition.y * 0.25;
+        const targetRotationY = mousePosition.x * 0.5;
+        const targetRotationX = mousePosition.y * 0.35;
 
-        meshRef.current.rotation.y += (targetRotationY - meshRef.current.rotation.y) * 0.06;
-        meshRef.current.rotation.x += (targetRotationX - meshRef.current.rotation.x) * 0.06;
+        meshRef.current.rotation.y += (targetRotationY - meshRef.current.rotation.y) * 0.15;
+        meshRef.current.rotation.x += (targetRotationX - meshRef.current.rotation.x) * 0.15;
         meshRef.current.rotation.z += 0.0015;
 
         meshRef.current.position.y = Math.sin(scrollProgress * Math.PI) * 0.15;

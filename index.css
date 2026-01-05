@@ -1,0 +1,26 @@
+:root {
+    --navy: #000000;
+    --aqua: #81C7D4;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F0F9FB;
+    color: #000;
+}
+
+.custom-scroll::-webkit-scrollbar {
+    width: 10px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    background-clip: content-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
