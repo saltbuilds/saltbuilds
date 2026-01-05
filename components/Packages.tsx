@@ -152,6 +152,8 @@ const Packages: React.FC = () => {
               <LazyImage
                 src={`/${iconImages[idx]}`}
                 alt={`${item.title} Icon`}
+                width={160}
+                height={160}
                 className="w-32 h-32 md:w-40 md:h-40 object-contain mb-8 transition-all duration-500 group-hover:scale-110 relative z-10"
               />
 
