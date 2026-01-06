@@ -26,20 +26,23 @@ const Portfolio: React.FC = () => {
       const content = card.querySelector('.card-content');
       const inner = card.querySelector('.card-inner');
 
-      // Sticky card with scale down and dim effect
+      // Sticky card with scale down and fade out effect
       ScrollTrigger.create({
         trigger: card,
         start: 'top 80px',
-        end: () => `+=${window.innerHeight * 0.8}`,
+        end: () => `+=${window.innerHeight * 1.2}`,
         pin: true,
         pinSpacing: false,
         scrub: 1,
         onUpdate: (self) => {
           const progress = self.progress;
 
-          // Scale down from 1 to 0.9 and dim to 50% opacity
-          const scale = 1 - (progress * 0.1);
-          const opacity = 1 - (progress * 0.5);
+          // Only start scaling/fading after card is fully visible (after 30% scroll)
+          const adjustedProgress = Math.max(0, (progress - 0.3) / 0.7);
+
+          // Scale down from 1 to 0.95 and fade OUT to 0% (completely invisible)
+          const scale = 1 - (adjustedProgress * 0.05);
+          const opacity = 1 - adjustedProgress; // Fade from 100% to 0%
 
           gsap.to(card, {
             scale: scale,
@@ -128,7 +131,7 @@ const Portfolio: React.FC = () => {
             >
               {/* Sticky Card */}
               <div
-                className="w-full rounded-[2.5rem] border-2 border-white/70 bg-white/60 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.8)] overflow-hidden"
+                className="w-full rounded-[2.5rem] border-2 border-white/60 bg-gradient-to-br from-white/95 via-white/98 to-white shadow-[0_8px_32px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-2xl backdrop-saturate-150 overflow-hidden"
                 style={{
                   minHeight: '70vh',
                   transformOrigin: 'center top'
@@ -139,11 +142,10 @@ const Portfolio: React.FC = () => {
                     {/* Project Image/Preview */}
                     <div className="w-full lg:w-1/2">
                       <div
-                        className="aspect-[4/5] lg:aspect-[3/4] rounded-[2rem] relative overflow-hidden border border-white/40 shadow-[0_8px_24px_rgba(0,0,0,0.1)]"
-                        style={{ backgroundColor: COLORS.GRAY_LIGHT }}
+                        className="aspect-[4/5] lg:aspect-[3/4] rounded-[2rem] relative overflow-hidden border-2 border-white/60 shadow-[0_8px_24px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.5)] bg-gradient-to-br from-slate-50 to-white"
                       >
                         {/* Glass overlay preview */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-slate-900/5" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/10 to-slate-100/20 backdrop-blur-sm" />
 
                         {/* Placeholder design */}
                         <div className="absolute inset-0 p-12 flex flex-col justify-center items-center text-center">
@@ -154,9 +156,9 @@ const Portfolio: React.FC = () => {
                             {project.placeholder}
                           </div>
                           <div className="flex gap-3">
-                            <div className="w-12 h-12 rounded-2xl bg-white/80 backdrop-blur-sm shadow-lg border border-white/60" />
-                            <div className="w-12 h-12 rounded-2xl bg-white/80 backdrop-blur-sm shadow-lg border border-white/60" />
-                            <div className="w-12 h-12 rounded-2xl bg-white/80 backdrop-blur-sm shadow-lg border border-white/60" />
+                            <div className="w-12 h-12 rounded-2xl bg-white/90 backdrop-blur-md shadow-[0_4px_12px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.8)] border-2 border-white/70" />
+                            <div className="w-12 h-12 rounded-2xl bg-white/90 backdrop-blur-md shadow-[0_4px_12px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.8)] border-2 border-white/70" />
+                            <div className="w-12 h-12 rounded-2xl bg-white/90 backdrop-blur-md shadow-[0_4px_12px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.8)] border-2 border-white/70" />
                           </div>
                         </div>
                       </div>
