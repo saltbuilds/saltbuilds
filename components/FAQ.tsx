@@ -88,7 +88,7 @@ const FAQ: React.FC = () => {
     };
 
     return (
-        <div className="py-24 md:py-32" style={{ backgroundColor: '#F0F9FB' }} id="faq">
+        <div className="py-24 md:py-32 relative pb-40" style={{ background: `linear-gradient(to bottom, #F0F9FB 0%, #F0F9FB 60%, ${COLORS.NAVY} 100%)` }} id="faq">
             <div className="max-w-[1200px] mx-auto px-4 md:px-6 lg:px-8">
 
                 {/* Header */}

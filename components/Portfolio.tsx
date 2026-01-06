@@ -97,7 +97,7 @@ const Portfolio: React.FC = () => {
   }, []);
 
   return (
-    <div id="portfolio" className="py-24 md:py-32 bg-gradient-to-b from-transparent to-slate-50/50" ref={sectionRef}>
+    <div id="portfolio" className="py-24 md:py-32 relative" style={{ background: 'linear-gradient(to bottom, #F0F9FB 0%, #F0F9FB 100%)' }} ref={sectionRef}>
       <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
