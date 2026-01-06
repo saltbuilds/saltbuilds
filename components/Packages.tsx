@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { COLORS } from '../constants';
 import SaltCharacter from './SaltCharacter';
 import LazyImage from './LazyImage';
-import { StaggerAnimateChildren } from './ScrollAnimations';
 
 interface OfferItem {
   title: string;
@@ -143,11 +142,9 @@ const Packages: React.FC = () => {
         </div>
 
         {/* 12-Item Grid */}
-        <StaggerAnimateChildren stagger={0.08} className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-20">
           {offers.map((item, idx) => (
-            <div key={idx} className="flex flex-col items-center text-center group relative glass-hover-lift">
-              {/* Glass Card Background on Hover */}
-              <div className="absolute inset-0 glass-card opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl -m-4 scale-110" />
+            <div key={idx} className="flex flex-col items-center text-center group relative">
 
 
 
@@ -172,7 +169,7 @@ const Packages: React.FC = () => {
               </div>
             </div>
           ))}
-        </StaggerAnimateChildren>
+        </div>
 
         {/* Bottom CTA Button */}
         <div className="mt-32 flex justify-center">
