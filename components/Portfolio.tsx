@@ -1,19 +1,96 @@
-
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { COLORS } from '../constants';
 import { ProjectType } from '../types';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const projects: ProjectType[] = [
-  { id: 1, title: "Lumina Scent", category: "E-Commerce", placeholder: "Project Preview 1" },
-  { id: 2, title: "Apex Dynamics", category: "SaaS Platform", placeholder: "Project Preview 2" },
-  { id: 3, title: "Foundry Law", category: "Corporate", placeholder: "Project Preview 3" },
-  { id: 4, title: "Velo Bikes", category: "Brand Experience", placeholder: "Project Preview 4" },
+  { id: 1, title: "Lumina Scent", category: "E-Commerce", placeholder: "Modern fragrance e-commerce with seamless checkout" },
+  { id: 2, title: "Apex Dynamics", category: "SaaS Platform", placeholder: "Enterprise SaaS dashboard with real-time analytics" },
+  { id: 3, title: "Foundry Law", category: "Corporate", placeholder: "Professional legal services platform" },
+  { id: 4, title: "Velo Bikes", category: "Brand Experience", placeholder: "Premium cycling brand digital experience" },
 ];
 
 const Portfolio: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const cards = cardsRef.current.filter(Boolean);
+
+    cards.forEach((card, index) => {
+      if (!card) return;
+
+      const content = card.querySelector('.card-content');
+      const inner = card.querySelector('.card-inner');
+
+      // Sticky card with scale down and dim effect
+      ScrollTrigger.create({
+        trigger: card,
+        start: 'top 80px',
+        end: () => `+=${window.innerHeight * 0.8}`,
+        pin: true,
+        pinSpacing: false,
+        scrub: 1,
+        onUpdate: (self) => {
+          const progress = self.progress;
+
+          // Scale down from 1 to 0.9 and dim to 50% opacity
+          const scale = 1 - (progress * 0.1);
+          const opacity = 1 - (progress * 0.5);
+
+          gsap.to(card, {
+            scale: scale,
+            opacity: opacity,
+            duration: 0.1,
+            ease: 'none'
+          });
+        }
+      });
+
+      // Parallax effect for inner content when card becomes active
+      if (content && inner) {
+        gsap.fromTo(content,
+          {
+            y: 50,
+            opacity: 0
+          },
+          {
+            y: 0,
+            opacity: 1,
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 80%',
+              end: 'top 20%',
+              scrub: 1
+            }
+          }
+        );
+
+        // Inner content subtle parallax
+        gsap.to(inner, {
+          y: -30,
+          scrollTrigger: {
+            trigger: card,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 2
+          }
+        });
+      }
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
   return (
-    <div id="portfolio" className="py-24 md:py-32">
+    <div id="portfolio" className="py-24 md:py-32 bg-gradient-to-b from-transparent to-slate-50/50" ref={sectionRef}>
       <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8">
+        {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="space-y-4">
             <h2
@@ -23,7 +100,7 @@ const Portfolio: React.FC = () => {
               THE PROOF
             </h2>
             <p className="text-lg opacity-70 font-medium max-w-xl" style={{ color: COLORS.NAVY }}>
-              Explore how we've helped businesses transform their digital presence with clean, minimalist excellence.
+              Scroll to explore premium projects that showcase our minimalist excellence.
             </p>
           </div>
           <button
@@ -37,41 +114,100 @@ const Portfolio: React.FC = () => {
           </button>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {projects.map((project) => (
+        {/* Sticky Cards Container */}
+        <div className="relative" style={{ minHeight: `${projects.length * 100}vh` }}>
+          {projects.map((project, index) => (
             <div
               key={project.id}
-              className="group cursor-pointer"
+              ref={(el) => (cardsRef.current[index] = el)}
+              className="w-full mb-8 md:mb-0"
+              style={{
+                position: 'relative',
+                zIndex: projects.length - index
+              }}
             >
+              {/* Sticky Card */}
               <div
-                className="aspect-[4/5] rounded-[2.5rem] mb-6 relative overflow-hidden transition-all group-hover:shadow-[0_30px_60px_-15px_rgba(129,199,212,0.3)] border border-slate-100 group-hover:border-aqua/20"
-                style={{ backgroundColor: COLORS.GRAY_LIGHT }}
+                className="w-full rounded-[2.5rem] border-2 border-white/70 bg-white/60 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.8)] overflow-hidden"
+                style={{
+                  minHeight: '70vh',
+                  transformOrigin: 'center top'
+                }}
               >
-                {/* 2D Design representation */}
-                <div className="absolute inset-0 p-8 flex flex-col justify-center items-center text-center opacity-40 transition-opacity group-hover:opacity-100">
-                  <div className="text-[10px] font-bold uppercase tracking-widest mb-2" style={{ color: COLORS.AQUA }}>
-                    SALT Creative
-                  </div>
-                  <div className="font-bold text-slate-400">
-                    {project.placeholder}
-                  </div>
-                  <div className="mt-4 flex gap-2">
-                    <div className="w-8 h-8 rounded-full bg-white shadow-sm" />
-                    <div className="w-8 h-8 rounded-full bg-white shadow-sm" />
+                <div className="card-content h-full p-8 md:p-12 lg:p-16">
+                  <div className="card-inner h-full flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+                    {/* Project Image/Preview */}
+                    <div className="w-full lg:w-1/2">
+                      <div
+                        className="aspect-[4/5] lg:aspect-[3/4] rounded-[2rem] relative overflow-hidden border border-white/40 shadow-[0_8px_24px_rgba(0,0,0,0.1)]"
+                        style={{ backgroundColor: COLORS.GRAY_LIGHT }}
+                      >
+                        {/* Glass overlay preview */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-slate-900/5" />
+
+                        {/* Placeholder design */}
+                        <div className="absolute inset-0 p-12 flex flex-col justify-center items-center text-center">
+                          <div className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: COLORS.AQUA }}>
+                            SALT Projects
+                          </div>
+                          <div className="font-bold text-slate-400 mb-8">
+                            {project.placeholder}
+                          </div>
+                          <div className="flex gap-3">
+                            <div className="w-12 h-12 rounded-2xl bg-white/80 backdrop-blur-sm shadow-lg border border-white/60" />
+                            <div className="w-12 h-12 rounded-2xl bg-white/80 backdrop-blur-sm shadow-lg border border-white/60" />
+                            <div className="w-12 h-12 rounded-2xl bg-white/80 backdrop-blur-sm shadow-lg border border-white/60" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Project Info */}
+                    <div className="w-full lg:w-1/2 space-y-6">
+                      <div>
+                        <div className="text-xs font-black uppercase tracking-[0.3em] mb-3" style={{ color: COLORS.AQUA }}>
+                          {project.category}
+                        </div>
+                        <h3 className="text-5xl md:text-6xl font-black tracking-tighter mb-4" style={{ color: COLORS.NAVY }}>
+                          {project.title}
+                        </h3>
+                        <p className="text-lg opacity-70 font-medium leading-relaxed" style={{ color: COLORS.NAVY }}>
+                          {project.placeholder}
+                        </p>
+                      </div>
+
+                      {/* Project Stats */}
+                      <div className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200">
+                        <div>
+                          <div className="text-3xl font-black" style={{ color: COLORS.NAVY }}>98%</div>
+                          <div className="text-xs font-bold uppercase tracking-widest opacity-50" style={{ color: COLORS.NAVY }}>
+                            Performance
+                          </div>
+                        </div>
+                        <div>
+                          <div className="text-3xl font-black" style={{ color: COLORS.NAVY }}>4.2s</div>
+                          <div className="text-xs font-bold uppercase tracking-widest opacity-50" style={{ color: COLORS.NAVY }}>
+                            Load Time
+                          </div>
+                        </div>
+                        <div>
+                          <div className="text-3xl font-black" style={{ color: COLORS.NAVY }}>100</div>
+                          <div className="text-xs font-bold uppercase tracking-widest opacity-50" style={{ color: COLORS.NAVY }}>
+                            SEO Score
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* CTA */}
+                      <button
+                        className="mt-6 px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-sm border-2 border-navy/10 transition-all hover:bg-navy hover:text-white hover:border-navy active:scale-95"
+                        style={{ color: COLORS.NAVY }}
+                      >
+                        View Project
+                      </button>
+                    </div>
                   </div>
                 </div>
-
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-slate-900/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </div>
-
-              <div className="px-4">
-                <div className="text-[11px] font-black uppercase tracking-[0.2em] mb-1" style={{ color: COLORS.AQUA }}>
-                  {project.category}
-                </div>
-                <h4 className="text-xl font-black tracking-tight" style={{ color: COLORS.NAVY }}>
-                  {project.title}
-                </h4>
               </div>
             </div>
           ))}

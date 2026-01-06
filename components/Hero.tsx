@@ -210,15 +210,15 @@ const Hero: React.FC = () => {
           <div className="absolute w-[120%] h-[120%] border border-aqua/10 rounded-full animate-spin-slow opacity-20" />
           <div className="absolute w-[110%] h-[110%] border border-navy/5 rounded-full animate-spin-slow-reverse opacity-10" />
 
-          <div className="relative w-full aspect-[4/3] rounded-[2.5rem] border border-white/80 shadow-2xl overflow-hidden bg-white/40 backdrop-blur-3xl">
+          <div className="relative w-full aspect-[4/3] rounded-[2.5rem] border-2 border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.6)] overflow-hidden bg-gradient-to-br from-white/30 via-white/20 to-white/10 backdrop-blur-[60px] backdrop-saturate-150">
             {/* Browser Header */}
-            <div className="h-12 bg-white/80 border-b border-navy/10 flex items-center px-6 gap-2">
+            <div className="h-12 bg-white/40 backdrop-blur-xl border-b border-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.5)] flex items-center px-6 gap-2">
               <div className="flex gap-2">
                 <div className="w-3 h-3 rounded-full bg-red-400" />
                 <div className="w-3 h-3 rounded-full bg-yellow-400" />
                 <div className="w-3 h-3 rounded-full bg-green-400" />
               </div>
-              <div className="mx-auto flex items-center gap-2 bg-white/60 px-3 py-1.5 rounded-lg border border-navy/20">
+              <div className="mx-auto flex items-center gap-2 bg-white/50 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/40 shadow-[0_2px_8px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.6)]">
                 <div className="w-3.5 h-3.5 rounded bg-aqua flex items-center justify-center">
                   <div className="w-1.5 h-1.5 bg-white rounded-full" />
                 </div>
@@ -228,7 +228,7 @@ const Hero: React.FC = () => {
 
             <div className="flex h-full">
               {/* Sidebar Code Simulation */}
-              <div className="w-[35%] bg-navy/[0.08] border-r border-navy/5 p-6 space-y-2.5 overflow-hidden">
+              <div className="w-[35%] bg-white/25 backdrop-blur-xl border-r border-white/30 shadow-[inset_1px_0_0_rgba(255,255,255,0.4)] p-6 space-y-2.5 overflow-hidden">
                 {codeLines.map((line, i) => (
                   <div
                     key={i}
@@ -245,12 +245,12 @@ const Hero: React.FC = () => {
               </div>
 
               {/* Main Preview Area */}
-              <div className="flex-1 p-8 relative overflow-hidden bg-white/30">
+              <div className="flex-1 p-8 relative overflow-hidden bg-gradient-to-br from-white/20 via-white/15 to-white/5 backdrop-blur-xl">
                 <div className="absolute inset-0 bg-[radial-gradient(#1A2B4411_1px,transparent_1px)] [background-size:24px_24px] opacity-60" />
                 <div className="relative h-full flex flex-col gap-6">
 
                   {/* Top Bar with distinct visibility */}
-                  <div className="w-full h-14 rounded-2xl border border-navy/20 bg-white/95 animate-component-snap flex items-center justify-between px-6 shadow-md">
+                  <div className="w-full h-14 rounded-2xl border-2 border-white/60 bg-white/70 backdrop-blur-2xl backdrop-saturate-150 animate-component-snap flex items-center justify-between px-6 shadow-[0_4px_24px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.8)]">
                     <div className="flex items-center gap-3">
                       <div className="w-5 h-5 rounded-lg bg-aqua shadow-sm" />
                       <div className="flex flex-col gap-1">
@@ -264,7 +264,7 @@ const Hero: React.FC = () => {
                   {/* Feature Cards Grid */}
                   <div className="grid grid-cols-2 gap-5 flex-grow">
                     {dashboardCards.map((card, i) => (
-                      <div key={i} className="rounded-[1.5rem] border border-navy/10 bg-white/95 flex flex-col p-5 animate-component-snap shadow-md hover:scale-105 transition-transform duration-300" style={{ animationDelay: `${0.6 + i * 0.15}s` }}>
+                      <div key={i} className="rounded-[1.5rem] border-2 border-white/70 bg-white/60 backdrop-blur-2xl backdrop-saturate-150 flex flex-col p-5 animate-component-snap shadow-[0_8px_24px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.8)] hover:scale-105 hover:bg-white/75 hover:border-white/90 hover:shadow-[0_12px_32px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,1)] transition-all duration-300" style={{ animationDelay: `${0.6 + i * 0.15}s` }}>
                         <div className="flex justify-between items-start mb-4">
                           <div className="text-[10px] font-black text-navy uppercase tracking-widest">{card.title}</div>
                           <div className="w-2 h-2 rounded-full" style={{ backgroundColor: card.color }} />
@@ -284,7 +284,7 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Decorative Floating Authority Element */}
-          <div className="absolute -top-12 -right-8 w-56 h-24 rounded-[2rem] border border-navy/10 bg-white/90 backdrop-blur-2xl shadow-2xl hidden lg:flex items-center px-6 gap-4 animate-float">
+          <div className="absolute -top-12 -right-8 w-56 h-24 rounded-[2rem] border-2 border-white/70 bg-white/60 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.8)] hidden lg:flex items-center px-6 gap-4 animate-float">
             <div className="w-12 h-12 rounded-2xl bg-aqua/10 flex items-center justify-center border border-aqua/20">
               <svg className="w-6 h-6 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg>
             </div>
