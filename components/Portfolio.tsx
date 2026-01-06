@@ -137,10 +137,15 @@ const Portfolio: React.FC = () => {
             >
               {/* Sticky Card */}
               <div
-                className="w-full rounded-[2.5rem] border-2 border-white/60 bg-gradient-to-br from-white/95 via-white/98 to-white shadow-[0_8px_32px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-2xl backdrop-saturate-150 overflow-hidden"
+                className="w-full rounded-[2.5rem] overflow-hidden"
                 style={{
                   minHeight: '70vh',
-                  transformOrigin: 'center top'
+                  transformOrigin: 'center top',
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.15) 100%)',
+                  backdropFilter: 'blur(20px) saturate(180%)',
+                  WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
                 }}
               >
                 <div className="card-content h-full p-8 md:p-12 lg:p-16">

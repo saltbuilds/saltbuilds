@@ -124,11 +124,14 @@ const FAQ: React.FC = () => {
                                 return (
                                     <div
                                         key={faqKey}
-                                        className="border-2 rounded-3xl overflow-hidden transition-all duration-300 shadow-md hover:shadow-xl"
+                                        className="border rounded-3xl overflow-hidden transition-all duration-300 shadow-md hover:shadow-xl"
                                         style={{
-                                            borderColor: isOpen ? COLORS.NAVY : 'rgba(26, 42, 79, 0.2)',
-                                            backgroundColor: isOpen ? 'rgba(26, 42, 79, 0.08)' : 'rgba(255, 255, 255, 0.6)',
-                                            backdropFilter: 'blur(10px)'
+                                            borderColor: isOpen ? COLORS.NAVY : 'rgba(255, 255, 255, 0.3)',
+                                            background: isOpen
+                                                ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%)'
+                                                : 'linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 100%)',
+                                            backdropFilter: 'blur(20px) saturate(180%)',
+                                            WebkitBackdropFilter: 'blur(20px) saturate(180%)'
                                         }}
                                     >
                                         {/* Question Button */}
@@ -205,7 +208,15 @@ const FAQ: React.FC = () => {
                 </div>
 
                 {/* CTA */}
-                <div className="mt-20 text-center bg-white/60 backdrop-blur-xl border-2 rounded-[2.5rem] p-12 md:p-16 shadow-[0_8px_32px_rgba(0,0,0,0.12)]" style={{ borderColor: COLORS.NAVY }}>
+                <div
+                    className="mt-20 text-center rounded-[2.5rem] p-12 md:p-16 shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
+                    style={{
+                        border: `1px solid ${COLORS.NAVY}`,
+                        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.15) 100%)',
+                        backdropFilter: 'blur(20px) saturate(180%)',
+                        WebkitBackdropFilter: 'blur(20px) saturate(180%)'
+                    }}
+                >
                     <h3 className="text-3xl md:text-5xl font-black mb-4" style={{ color: COLORS.NAVY }}>
                         Still have a question?
                     </h3>

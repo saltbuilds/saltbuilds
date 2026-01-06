@@ -27,10 +27,15 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-        ? 'backdrop-blur-xl border-b shadow-sm py-3'
-        : 'bg-transparent py-6'
+        ? 'py-3 shadow-sm'
+        : 'py-6'
         }`}
-      style={scrolled ? { backgroundColor: 'rgba(240, 249, 251, 0.7)', borderColor: 'rgba(129, 199, 212, 0.2)' } : {}}
+      style={{
+        backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.15)' : 'rgba(255, 255, 255, 0.1)',
+        backdropFilter: 'blur(20px) saturate(180%)',
+        WebkitBackdropFilter: 'blur(20px) saturate(180%)', // Safari compatibility
+        borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid rgba(255, 255, 255, 0.1)',
+      }}
     >
       <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 flex justify-between items-center">
         {/* Brand/Logo */}
@@ -60,8 +65,13 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden p-2 rounded-lg backdrop-blur-sm border"
-          style={{ backgroundColor: 'rgba(240, 249, 251, 0.2)', borderColor: 'rgba(129, 199, 212, 0.3)' }}
+          className="md:hidden p-2 rounded-lg"
+          style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.2)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
+            border: '1px solid rgba(255, 255, 255, 0.3)'
+          }}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           <div className={`w-6 h-0.5 mb-1.5 transition-all ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} style={{ backgroundColor: COLORS.NAVY }} />
@@ -72,7 +82,15 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 backdrop-blur-2xl border-t p-8 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-300" style={{ backgroundColor: 'rgba(240, 249, 251, 0.9)', borderColor: 'rgba(129, 199, 212, 0.2)' }}>
+        <div
+          className="md:hidden absolute top-full left-0 right-0 p-8 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-300"
+          style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.15)',
+            backdropFilter: 'blur(20px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+            borderTop: '1px solid rgba(255, 255, 255, 0.2)'
+          }}
+        >
           <div className="flex flex-col gap-8">
             {navLinks.map((link) => (
               <a
