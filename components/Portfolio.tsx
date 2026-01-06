@@ -26,29 +26,32 @@ const Portfolio: React.FC = () => {
       const content = card.querySelector('.card-content');
       const inner = card.querySelector('.card-inner');
 
-      // Sticky card with scale down and fade out effect
+      // Sticky card with ultra-smooth scale and fade effect
       ScrollTrigger.create({
         trigger: card,
         start: 'top 80px',
-        end: () => `+=${window.innerHeight * 1.2}`,
+        end: () => `+=${window.innerHeight * 1.5}`, // Longer duration for smoother transition
         pin: true,
         pinSpacing: false,
-        scrub: 1,
+        scrub: 2, // Increased scrub for smoother, more fluid animation
         onUpdate: (self) => {
           const progress = self.progress;
 
-          // Only start scaling/fading after card is fully visible (after 30% scroll)
-          const adjustedProgress = Math.max(0, (progress - 0.3) / 0.7);
+          // Start scaling/fading after 20% (earlier, smoother start)
+          const adjustedProgress = Math.max(0, (progress - 0.2) / 0.8);
 
-          // Scale down from 1 to 0.95 and fade OUT to 0% (completely invisible)
-          const scale = 1 - (adjustedProgress * 0.05);
-          const opacity = 1 - adjustedProgress; // Fade from 100% to 0%
+          // Smooth power curve for natural deceleration
+          const easedProgress = adjustedProgress * adjustedProgress * (3 - 2 * adjustedProgress);
+
+          // Scale down from 1 to 0.96 and fade OUT to 0%
+          const scale = 1 - (easedProgress * 0.04);
+          const opacity = 1 - easedProgress;
 
           gsap.to(card, {
             scale: scale,
             opacity: opacity,
-            duration: 0.1,
-            ease: 'none'
+            duration: 0.3, // Longer duration for smoother tweening
+            ease: 'power2.out'
           });
         }
       });
@@ -57,29 +60,32 @@ const Portfolio: React.FC = () => {
       if (content && inner) {
         gsap.fromTo(content,
           {
-            y: 50,
+            y: 60,
             opacity: 0
           },
           {
             y: 0,
             opacity: 1,
+            duration: 1,
+            ease: 'power3.out',
             scrollTrigger: {
               trigger: card,
-              start: 'top 80%',
-              end: 'top 20%',
-              scrub: 1
+              start: 'top 75%',
+              end: 'top 25%',
+              scrub: 2
             }
           }
         );
 
-        // Inner content subtle parallax
+        // Inner content smooth parallax
         gsap.to(inner, {
-          y: -30,
+          y: -40,
+          ease: 'none',
           scrollTrigger: {
             trigger: card,
             start: 'top bottom',
             end: 'bottom top',
-            scrub: 2
+            scrub: 3 // Slower, smoother parallax
           }
         });
       }
