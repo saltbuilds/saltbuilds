@@ -55,23 +55,23 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="py-20 text-white relative overflow-hidden" style={{ backgroundColor: COLORS.NAVY }} id="contact">
+    <footer className="py-8 text-white relative overflow-hidden" style={{ backgroundColor: COLORS.NAVY }} id="contact">
       {/* Vacation Mascot placement */}
       <div className="absolute top-10 right-10 opacity-20 hover:opacity-100 transition-all duration-700 hidden lg:block hover:scale-110 hover:rotate-6">
         <SaltCharacter type="vacation" size={150} />
       </div>
 
       <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 relative z-10">
-        <div className="grid md:grid-cols-4 gap-16 mb-20">
+        <div className="grid md:grid-cols-4 gap-6 mb-8">
           {/* Brand */}
-          <div className="col-span-2 space-y-8">
+          <div className="col-span-2 space-y-4">
             <div className="flex items-center gap-4 group cursor-pointer w-fit">
               <div className="p-2 bg-white rounded-xl transition-all duration-500 group-hover:rotate-[360deg] group-hover:shadow-[0_0_20px_rgba(255,255,255,0.4)]">
                 <SaltLogo className="w-8 h-8" />
               </div>
               <span className="text-3xl font-black tracking-tighter transition-all group-hover:text-[#81C7D4]">SALT.</span>
             </div>
-            <p className="text-xl text-slate-300 leading-relaxed max-w-md">
+            <p className="text-base text-slate-300 leading-relaxed max-w-md">
               Crafting modern digital experiences with precision and clarity. We are your partner in building foundations that last.
             </p>
             <div className="flex gap-4">
@@ -92,8 +92,8 @@ const Footer: React.FC = () => {
 
           {/* Links 1 */}
           <div>
-            <h5 className="text-lg font-bold mb-8 uppercase tracking-widest text-slate-400">Services</h5>
-            <ul className="space-y-4 font-medium text-slate-300">
+            <h5 className="text-sm font-bold mb-4 uppercase tracking-widest text-slate-400">Services</h5>
+            <ul className="space-y-2 font-medium text-slate-300 text-sm">
               {services.map((service) => (
                 <li
                   key={service}
@@ -108,8 +108,8 @@ const Footer: React.FC = () => {
 
           {/* Links 2 */}
           <div>
-            <h5 className="text-lg font-bold mb-8 uppercase tracking-widest text-slate-400">Contact</h5>
-            <ul className="space-y-4 font-medium text-slate-300">
+            <h5 className="text-sm font-bold mb-4 uppercase tracking-widest text-slate-400">Contact</h5>
+            <ul className="space-y-2 font-medium text-slate-300 text-sm">
               <li className="hover:text-[#81C7D4] transition-colors cursor-pointer">hello@salt-agency.com</li>
               <li className="hover:text-[#81C7D4] transition-colors cursor-pointer">saltbuilds@gmail.com</li>
               <li className="pt-2 text-slate-500 text-xs italic">Building digital foundations worldwide.</li>
@@ -117,7 +117,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-500 text-sm font-medium">
+        <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-xs font-medium">
           <div className="hover:text-slate-300 transition-colors cursor-default">
             © {new Date().getFullYear()} SALT Web Development Agency. All rights reserved.
           </div>

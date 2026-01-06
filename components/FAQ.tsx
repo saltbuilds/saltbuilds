@@ -88,7 +88,7 @@ const FAQ: React.FC = () => {
     };
 
     return (
-        <div className="py-24 md:py-32 relative pb-40" style={{ background: `linear-gradient(to bottom, #F0F9FB 0%, #F0F9FB 60%, ${COLORS.NAVY} 100%)` }} id="faq">
+        <div className="py-24 md:py-32 relative pb-48" style={{ background: `linear-gradient(to bottom, #F0F9FB 0%, #F0F9FB 40%, ${COLORS.NAVY} 100%)` }} id="faq">
             <div className="max-w-[1200px] mx-auto px-4 md:px-6 lg:px-8">
 
                 {/* Header */}
@@ -96,7 +96,7 @@ const FAQ: React.FC = () => {
                     <h2 className="text-5xl md:text-8xl font-light tracking-tighter uppercase" style={{ color: COLORS.NAVY }}>
                         Questions?
                     </h2>
-                    <h2 className="text-7xl md:text-[160px] font-black tracking-tighter uppercase leading-[0.8]" style={{ color: COLORS.AQUA }}>
+                    <h2 className="text-7xl md:text-[160px] font-black tracking-tighter uppercase leading-[0.8]" style={{ color: COLORS.NAVY }}>
                         ANSWERED
                     </h2>
                     <p className="text-lg md:text-xl mt-8 max-w-2xl mx-auto" style={{ color: COLORS.NAVY, opacity: 0.7 }}>
@@ -110,10 +110,10 @@ const FAQ: React.FC = () => {
                         <div key={category} className="space-y-4">
                             {/* Category Header */}
                             <div className="mb-6">
-                                <h3 className="text-2xl md:text-3xl font-black tracking-tight" style={{ color: COLORS.AQUA }}>
+                                <h3 className="text-2xl md:text-3xl font-black tracking-tight" style={{ color: COLORS.NAVY }}>
                                     {category}
                                 </h3>
-                                <div className="h-1 w-20 mt-2 rounded-full" style={{ backgroundColor: COLORS.AQUA }} />
+                                <div className="h-1 w-20 mt-2 rounded-full" style={{ backgroundColor: COLORS.NAVY }} />
                             </div>
 
                             {/* Category FAQs */}
@@ -126,8 +126,8 @@ const FAQ: React.FC = () => {
                                         key={faqKey}
                                         className="border-2 rounded-3xl overflow-hidden transition-all duration-300 shadow-md hover:shadow-xl"
                                         style={{
-                                            borderColor: isOpen ? COLORS.AQUA : 'rgba(129, 199, 212, 0.2)',
-                                            backgroundColor: isOpen ? 'rgba(129, 199, 212, 0.08)' : 'rgba(255, 255, 255, 0.6)',
+                                            borderColor: isOpen ? COLORS.NAVY : 'rgba(26, 42, 79, 0.2)',
+                                            backgroundColor: isOpen ? 'rgba(26, 42, 79, 0.08)' : 'rgba(255, 255, 255, 0.6)',
                                             backdropFilter: 'blur(10px)'
                                         }}
                                     >
@@ -141,8 +141,8 @@ const FAQ: React.FC = () => {
                                                 <div
                                                     className="w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center font-black text-xl transition-all flex-shrink-0 shadow-sm"
                                                     style={{
-                                                        backgroundColor: isOpen ? COLORS.AQUA : 'rgba(129, 199, 212, 0.1)',
-                                                        color: isOpen ? '#FFFFFF' : COLORS.AQUA
+                                                        backgroundColor: isOpen ? COLORS.NAVY : 'rgba(26, 42, 79, 0.1)',
+                                                        color: isOpen ? '#FFFFFF' : COLORS.NAVY
                                                     }}
                                                 >
                                                     Q
@@ -158,7 +158,7 @@ const FAQ: React.FC = () => {
                                                 className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm ${isOpen ? 'rotate-180' : ''
                                                     }`}
                                                 style={{
-                                                    backgroundColor: isOpen ? COLORS.AQUA : 'rgba(129, 199, 212, 0.1)'
+                                                    backgroundColor: isOpen ? COLORS.NAVY : 'rgba(26, 42, 79, 0.1)'
                                                 }}
                                             >
                                                 <svg
@@ -179,13 +179,13 @@ const FAQ: React.FC = () => {
                                                 }`}
                                         >
                                             <div className="px-6 md:px-10 pb-6 md:pb-8">
-                                                <div className="pt-4 border-t-2" style={{ borderColor: 'rgba(129, 199, 212, 0.2)' }}>
+                                                <div className="pt-4 border-t-2" style={{ borderColor: 'rgba(26, 42, 79, 0.2)' }}>
                                                     <div className="flex gap-4">
                                                         <div
                                                             className="w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center font-black text-xl flex-shrink-0 shadow-sm"
                                                             style={{
-                                                                backgroundColor: 'rgba(129, 199, 212, 0.1)',
-                                                                color: COLORS.AQUA
+                                                                backgroundColor: 'rgba(26, 42, 79, 0.1)',
+                                                                color: COLORS.NAVY
                                                             }}
                                                         >
                                                             A
@@ -205,8 +205,8 @@ const FAQ: React.FC = () => {
                 </div>
 
                 {/* CTA */}
-                <div className="mt-20 text-center bg-white/60 backdrop-blur-xl border-2 rounded-[2.5rem] p-12 md:p-16 shadow-[0_8px_32px_rgba(0,0,0,0.12)]" style={{ borderColor: COLORS.AQUA }}>
-                    <h3 className="text-3xl md:text-5xl font-black mb-4" style={{ color: COLORS.AQUA }}>
+                <div className="mt-20 text-center bg-white/60 backdrop-blur-xl border-2 rounded-[2.5rem] p-12 md:p-16 shadow-[0_8px_32px_rgba(0,0,0,0.12)]" style={{ borderColor: COLORS.NAVY }}>
+                    <h3 className="text-3xl md:text-5xl font-black mb-4" style={{ color: COLORS.NAVY }}>
                         Still have a question?
                     </h3>
                     <p className="text-lg md:text-xl mb-8" style={{ color: COLORS.NAVY, opacity: 0.7 }}>
@@ -216,7 +216,7 @@ const FAQ: React.FC = () => {
                         onClick={handleWhatsAppClick}
                         className="px-12 py-5 rounded-full font-black text-lg uppercase tracking-wider transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-2xl flex items-center gap-3 mx-auto"
                         style={{
-                            backgroundColor: COLORS.AQUA,
+                            backgroundColor: COLORS.NAVY,
                             color: '#FFFFFF'
                         }}
                     >
