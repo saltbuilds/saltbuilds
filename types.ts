@@ -19,9 +19,3 @@ export interface ProjectType {
   category: string;
   placeholder: string;
 }
-
-// Message interface for AI Chat Assistant
-export interface Message {
-  role: 'user' | 'model';
-  text: string;
-}

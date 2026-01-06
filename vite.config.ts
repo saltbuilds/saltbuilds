@@ -1,4 +1,3 @@
-
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
@@ -14,11 +13,7 @@ export default defineConfig({
       compress: {
         drop_console: true,
         drop_debugger: true,
-        pure_funcs: ['console.log'],
         passes: 2
-      },
-      mangle: {
-        toplevel: true
       },
       format: {
         comments: false
@@ -26,43 +21,21 @@ export default defineConfig({
     },
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'react-vendor';
-            }
-            if (id.includes('gsap')) {
-              return 'gsap-vendor';
-            }
-            if (id.includes('web-vitals')) {
-              return 'web-vitals';
-            }
-            return 'vendor';
-          }
-        },
-        chunkFileNames: 'assets/[name]-[hash].js',
-        entryFileNames: 'assets/[name]-[hash].js',
-        assetFileNames: 'assets/[name]-[hash].[ext]'
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'animations': ['gsap']
+        }
       }
     },
-    chunkSizeWarningLimit: 500,
-    cssCodeSplit: true,
+    chunkSizeWarningLimit: 1000,
     cssMinify: 'lightningcss',
-    assetsInlineLimit: 2048,
-    reportCompressedSize: false,
-    modulePreload: {
-      polyfill: false
-    }
+    assetsInlineLimit: 4096,
+    reportCompressedSize: false
   },
   css: {
     transformer: 'lightningcss',
     lightningcss: {
       minify: true
-    }
-  },
-  server: {
-    fs: {
-      strict: false
     }
   }
 });

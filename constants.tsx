@@ -15,6 +15,7 @@ export const COLORS = {
 export const BRAND_CONFIG = {
   name: "SALT.",
   fullName: "SALT Builds",
+  email: "saltbuilds@gmail.com",
   tagline: "We Build -> You Grow",
   description: "Crafting modern digital experiences with precision and clarity. We are your partner in building foundations that last.",
   logo: {
