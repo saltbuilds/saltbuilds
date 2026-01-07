@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
           <div className="col-span-2 space-y-4">
             <div className="flex items-center gap-4 group cursor-pointer w-fit">
               <div className="p-2 bg-white rounded-xl transition-all duration-500 group-hover:rotate-[360deg] group-hover:shadow-[0_0_20px_rgba(255,255,255,0.4)]">
-                <SaltLogo className="w-8 h-8" />
+                <img src="/salt-logo.png" alt="SALT Builds Logo" className="w-8 h-8" />
               </div>
               <span className="text-3xl font-black tracking-tighter transition-all group-hover:text-[#81C7D4]">SALT.</span>
             </div>

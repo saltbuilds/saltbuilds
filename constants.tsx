@@ -69,7 +69,12 @@ export const BrandIdentity: React.FC<{
   textSize?: string
 }> = ({ showText = true, textColor = COLORS.NAVY, iconSize = "w-10 h-10", textSize = "text-2xl" }) => (
   <div className="flex items-center gap-3 group cursor-pointer">
-    <SaltLogo className={`${iconSize} transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`} />
+    <img
+      src="/salt-logo.png"
+      alt="SALT Builds Logo"
+      className={`${iconSize} transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}
+    />
     {showText && <span className={`${textSize} font-black tracking-tighter`} style={{ color: textColor }}>{BRAND_CONFIG.name}</span>}
   </div>
 );
+
