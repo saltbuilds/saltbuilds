@@ -91,7 +91,7 @@ const Hero: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const tagline = "We Build. You Grow. That's SALT.";
+  const tagline = "We Build You Grow.";
 
   return (
     <div className="relative pt-24 pb-12 md:pt-48 md:pb-24 overflow-hidden min-h-[70vh] md:min-h-[90vh]">
@@ -148,11 +148,11 @@ const Hero: React.FC = () => {
               style={{ color: COLORS.NAVY }}
             >
               <div className="overflow-hidden">
-                <span className="inline-block animate-headline-reveal" style={{ animationDelay: '0.1s' }}>The</span>
+                <span className="inline-block animate-headline-reveal" style={{ animationDelay: '0.1s' }}>Worth</span>
               </div>
               <div className="overflow-hidden">
                 <span className="inline-block animate-headline-reveal" style={{ animationDelay: '0.2s' }}>
-                  Essential <span style={{ color: COLORS.AQUA }}>SALT.</span>
+                  Your <span style={{ color: COLORS.AQUA }}>Salt.</span>
                 </span>
               </div>
             </h1>
@@ -160,7 +160,7 @@ const Hero: React.FC = () => {
               className="text-lg md:text-xl leading-relaxed opacity-70 font-medium max-w-md animate-fade-in"
               style={{ color: COLORS.NAVY, animationDelay: '0.6s' }}
             >
-              Like salt is the essential ingredient that elevates every dish, SALT is the essential digital ingredient that transforms your online presence. Premium web foundations seasoned with technical mastery.
+              Digital foundations seasoned with technical rigor and minimalist soul. We build what stays.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 md:gap-5 pt-2 md:pt-4 animate-fade-in" style={{ animationDelay: '0.8s' }}>
               <button
