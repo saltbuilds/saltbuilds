@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Packages from './components/Packages';
-import Portfolio from './components/Portfolio';
-import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import WebVitals from './components/WebVitals';
+import HomePage from './pages/HomePage';
+import WebDevelopment from './pages/WebDevelopment';
 
 const App: React.FC = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -45,18 +44,10 @@ const App: React.FC = () => {
 
             <Navbar scrolled={scrolled} />
             <main className="flex-grow">
-                <section id="home">
-                    <Hero />
-                </section>
-                <section id="packages">
-                    <Packages />
-                </section>
-                <section id="portfolio">
-                    <Portfolio />
-                </section>
-                <section id="faq">
-                    <FAQ />
-                </section>
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/web-development" element={<WebDevelopment />} />
+                </Routes>
             </main>
             <Footer />
 
