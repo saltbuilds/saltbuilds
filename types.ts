@@ -18,4 +18,7 @@ export interface ProjectType {
   title: string;
   category: string;
   placeholder: string;
+  image?: string;
+  url?: string;
+  partnership?: string;
 }

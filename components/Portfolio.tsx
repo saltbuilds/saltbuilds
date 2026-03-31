@@ -7,10 +7,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const projects: ProjectType[] = [
-  { id: 1, title: "Lumina Scent", category: "E-Commerce", placeholder: "Modern fragrance e-commerce with seamless checkout" },
-  { id: 2, title: "Apex Dynamics", category: "SaaS Platform", placeholder: "Enterprise SaaS dashboard with real-time analytics" },
-  { id: 3, title: "Foundry Law", category: "Corporate", placeholder: "Professional legal services platform" },
-  { id: 4, title: "Velo Bikes", category: "Brand Experience", placeholder: "Premium cycling brand digital experience" },
+  { id: 1, title: "Synergy Circle", category: "Event Platform", placeholder: "Developed in partnership with Rotaract SLIIT & SLIIT Business School — a startup & innovation competition platform built to connect student innovators with mentors and investors.", image: "/synergy-circle-hero.png", url: "https://synergycircle.online", partnership: "Partnership Project — Rotaract SLIIT × SLIIT Business School" },
+  { id: 2, title: "Lumina Scent", category: "E-Commerce", placeholder: "Modern fragrance e-commerce with seamless checkout" },
+  { id: 3, title: "Apex Dynamics", category: "SaaS Platform", placeholder: "Enterprise SaaS dashboard with real-time analytics" },
+  { id: 4, title: "Foundry Law", category: "Corporate", placeholder: "Professional legal services platform" },
+  { id: 5, title: "Velo Bikes", category: "Brand Experience", placeholder: "Premium cycling brand digital experience" },
 ];
 
 const Portfolio: React.FC = () => {
@@ -153,25 +154,44 @@ const Portfolio: React.FC = () => {
                     {/* Project Image/Preview */}
                     <div className="w-full lg:w-1/2">
                       <div
-                        className="aspect-[4/5] lg:aspect-[3/4] rounded-[2rem] relative overflow-hidden border-2 border-white/60 shadow-[0_8px_24px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.5)] bg-gradient-to-br from-slate-50 to-white"
+                        className="aspect-[4/5] lg:aspect-[3/4] rounded-[2rem] relative overflow-hidden border-2 border-white/60 shadow-[0_8px_24px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.5)] bg-gradient-to-br from-slate-50 to-white group/image"
                       >
-                        {/* Glass overlay preview */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/10 to-slate-100/20 backdrop-blur-sm" />
+                        {project.image ? (
+                          <>
+                            <img
+                              src={project.image}
+                              alt={project.title}
+                              className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover/image:scale-105"
+                            />
+                            {/* Subtle gradient overlay at bottom */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                            {/* Live badge */}
+                            <div className="absolute top-6 left-6 flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 backdrop-blur-md shadow-lg border border-white/60">
+                              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                              <span className="text-xs font-black uppercase tracking-widest" style={{ color: COLORS.NAVY }}>Live</span>
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            {/* Glass overlay preview */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/10 to-slate-100/20 backdrop-blur-sm" />
 
-                        {/* Placeholder design */}
-                        <div className="absolute inset-0 p-12 flex flex-col justify-center items-center text-center">
-                          <div className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: COLORS.AQUA }}>
-                            SALT Projects
-                          </div>
-                          <div className="font-bold text-slate-400 mb-8">
-                            {project.placeholder}
-                          </div>
-                          <div className="flex gap-3">
-                            <div className="w-12 h-12 rounded-2xl bg-white/90 backdrop-blur-md shadow-[0_4px_12px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.8)] border-2 border-white/70" />
-                            <div className="w-12 h-12 rounded-2xl bg-white/90 backdrop-blur-md shadow-[0_4px_12px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.8)] border-2 border-white/70" />
-                            <div className="w-12 h-12 rounded-2xl bg-white/90 backdrop-blur-md shadow-[0_4px_12px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.8)] border-2 border-white/70" />
-                          </div>
-                        </div>
+                            {/* Placeholder design */}
+                            <div className="absolute inset-0 p-12 flex flex-col justify-center items-center text-center">
+                              <div className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: COLORS.AQUA }}>
+                                SALT Projects
+                              </div>
+                              <div className="font-bold text-slate-400 mb-8">
+                                {project.placeholder}
+                              </div>
+                              <div className="flex gap-3">
+                                <div className="w-12 h-12 rounded-2xl bg-white/90 backdrop-blur-md shadow-[0_4px_12px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.8)] border-2 border-white/70" />
+                                <div className="w-12 h-12 rounded-2xl bg-white/90 backdrop-blur-md shadow-[0_4px_12px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.8)] border-2 border-white/70" />
+                                <div className="w-12 h-12 rounded-2xl bg-white/90 backdrop-blur-md shadow-[0_4px_12px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.8)] border-2 border-white/70" />
+                              </div>
+                            </div>
+                          </>
+                        )}
                       </div>
                     </div>
 
@@ -187,6 +207,16 @@ const Portfolio: React.FC = () => {
                         <p className="text-lg opacity-70 font-medium leading-relaxed" style={{ color: COLORS.NAVY }}>
                           {project.placeholder}
                         </p>
+                        {(project as any).partnership && (
+                          <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-blue-200 bg-blue-50/80">
+                            <svg className="w-4 h-4 flex-shrink-0" style={{ color: COLORS.AQUA }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span className="text-xs font-bold uppercase tracking-wider" style={{ color: COLORS.NAVY }}>
+                              {(project as any).partnership}
+                            </span>
+                          </div>
+                        )}
                       </div>
 
                       {/* Project Stats */}
@@ -212,12 +242,31 @@ const Portfolio: React.FC = () => {
                       </div>
 
                       {/* CTA */}
-                      <button
-                        className="mt-6 px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-sm border-2 border-navy/10 transition-all hover:bg-navy hover:text-white hover:border-navy active:scale-95"
-                        style={{ color: COLORS.NAVY }}
-                      >
-                        View Project
-                      </button>
+                      {project.url ? (
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-6 inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-sm border-2 transition-all hover:gap-5 active:scale-95"
+                          style={{
+                            color: '#fff',
+                            background: COLORS.NAVY,
+                            borderColor: COLORS.NAVY
+                          }}
+                        >
+                          Visit Live Site
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </a>
+                      ) : (
+                        <button
+                          className="mt-6 px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-sm border-2 border-navy/10 transition-all hover:bg-navy hover:text-white hover:border-navy active:scale-95"
+                          style={{ color: COLORS.NAVY }}
+                        >
+                          View Project
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
